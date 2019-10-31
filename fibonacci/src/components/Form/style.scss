@@ -1,0 +1,12 @@
+div.form {
+  margin: 50px auto;
+  padding: 24px 20px;
+  max-width: 98%;
+  width: 500px;
+  background: #222;
+  border-radius: 4px;
+
+  & .row {
+    margin-bottom: 14px;
+  }
+}
