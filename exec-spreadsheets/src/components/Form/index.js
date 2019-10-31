@@ -39,14 +39,16 @@ export default function Form() {
   const handleChange = e => {
     filterSelection()
 
-    if (e === '' || Number(e) === 0) {
+    let num = Number(e)
+
+    if (e === '' || num === 0 || num > sheet.length) {
       return
     }
 
     let sht = sheet.filter(she => {
       return she.id === Number(e)
     })
-    
+
     let element = document.getElementById(sht[0].id)
     element.classList.add('active')
   }
