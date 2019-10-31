@@ -1,6 +1,5 @@
 import React from 'react'
 import Input from './Components/Input'
-import Button from './Components/Button'
 import Sheet from './Components/Sheet'
 import './style.scss'
 
@@ -36,12 +35,53 @@ const sheet = [
 ]
 
 export default function Form() {
-  const [num, setNum] = React.useState(0)
 
   const handleChange = e => {
-    setNum(e)
+    filterSelection()
+
+    if (e === '' || Number(e) === 0) {
+      return
+    }
+
+    let sht = sheet.filter(she => {
+      return she.id === Number(e)
+    })
+
+    let element = document.getElementById(sht[0].id)
+    element.classList.add('active')
   }
 
+  // filterSelection("all")
+  function filterSelection() {
+    var x, i;
+    x = document.getElementsByClassName("sheet")
+    // if (c == "all") c = ""
+    for (i = 0; i < x.length; i++) {
+      RemoveClass(x[i], "active")
+      // if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show")
+    }
+  }
+
+  // function AddClass(element, name) {
+  //   var i, arr1, arr2;
+  //   arr1 = element.className.split(" ");
+  //   arr2 = name.split(" ");
+  //   for (i = 0; i < arr2.length; i++) {
+  //     if (arr1.indexOf(arr2[i]) === -1) {element.className += " " + arr2[i];}
+  //   }
+  // }
+
+  function RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);     
+      }
+    }
+    element.className = arr1.join(" ");
+  }
 
   return (
     <React.Fragment>
