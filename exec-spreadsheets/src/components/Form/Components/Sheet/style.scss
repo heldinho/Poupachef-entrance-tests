@@ -1,0 +1,19 @@
+div.container {
+  display: flex;
+  flex-wrap: wrap; // Quebra a linha
+  flex-direction: row; //Direção que você deseja
+
+  div.sheet {
+    width: 115px;
+    height: 35px;
+    padding: 5px;
+    color: #fff;
+    border: 1px solid #999;
+    text-align: center;
+
+    &.active {
+      background: #1c8835;
+      border-color: #1c8835;
+    }
+  }
+}
