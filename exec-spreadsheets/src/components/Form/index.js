@@ -2,6 +2,7 @@ import React from 'react'
 import Input from './Components/Input'
 import Sheet from './Components/Sheet'
 import './style.scss'
+import { FormatDate, onlyNumber } from '../../util/FormatDate'
 
 const sheet = [
   { id: 1, text: 'A' },
@@ -38,17 +39,13 @@ export default function Form() {
 
   const handleChange = e => {
     filterSelection()
-
     let num = Number(e)
-
     if (e === '' || num === 0 || num > sheet.length) {
       return
     }
-
     let sht = sheet.filter(she => {
       return she.id === Number(e)
     })
-
     let element = document.getElementById(sht[0].id)
     element.classList.add('active')
   }
@@ -89,7 +86,19 @@ export default function Form() {
     <React.Fragment>
       <div className="form">
         <div className="row">
-          <Input change={e => handleChange(e.target.value)} min={sheet[0].id} max={sheet[27].id} />
+          <Input
+            Htype="tel"
+            Hlabel={`Digite um ID para selecionar a Sheet: ${sheet[0].id} to ${sheet[27].id}`}
+            Hkeypress={e => onlyNumber(e)}
+            Hchange={e => handleChange(e.target.value)}
+          />
+          <Input
+            Htype="tel"
+            Hlabel="Teste de Formate Date:"
+            Hkeypress={e => onlyNumber(e)}
+            Hchange={e => FormatDate(e.target, e)}
+            Hmaxcaracter="10"
+          />
         </div>
         <div className="row">
           <div className="container">
