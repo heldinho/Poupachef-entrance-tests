@@ -12,8 +12,9 @@ div.container {
     text-align: center;
 
     &.active {
+      font-weight: bold;
       background: #1c8835;
-      border-color: #1c8835;
+      // border-color: #1c8835;
     }
   }
 }
